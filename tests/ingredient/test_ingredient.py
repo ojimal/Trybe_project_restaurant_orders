@@ -3,15 +3,15 @@ from src.models.ingredient import Ingredient  # noqa: F401, E261, E501
 
 # Req 1
 def test_ingredient():
-    cheese = Ingredient("queijo provolone")
-    flour = Ingredient("farinha")
-    invalid = Ingredient("")
+    ingredient = Ingredient("bacon")
+    assert ingredient == ingredient
+    ingredient2 = Ingredient("ovo")
+    assert ingredient2 != ingredient
+    no_ingredient = Ingredient("")
+    assert no_ingredient.name == ""
 
-    assert cheese.name == "queijo provolone"
-    assert cheese is not flour
-    assert cheese.restrictions
-    assert invalid.name == ""
+    assert ingredient.restrictions
 
-    assert cheese.__repr__() == "Ingredient('queijo provolone')"
-    assert cheese.__hash__() is cheese.__hash__()
-    assert cheese.__hash__() != flour.__hash__()
+    assert repr(ingredient) == "Ingredient('bacon')"
+    assert hash(ingredient) == hash(ingredient)
+    assert hash(ingredient) != hash(ingredient2)
